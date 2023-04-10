@@ -22,7 +22,7 @@ apply plugin: "org.sonarqube"
 
 sonarqube {
 	properties {
-		property "sonar.branch.name", "nombre_de_tu_rama_predeterminada"
+		property "sonar.branch.name", "main"
 	}
 }
 
