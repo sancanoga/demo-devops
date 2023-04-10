@@ -27,6 +27,7 @@ stages:
               extraProperties: |
                   sonar.projectKey=sancanoga-demo-devops
                   sonar.projectName=demo-devops
+                  sonar.branch.name=main
 
           - task: Gradle@2
             displayName: 'Build Project'
@@ -51,3 +52,4 @@ stages:
             inputs:
               ArtifactName: 'deploy'
               PathtoPublish: '$(System.DefaultWorkingDirectory)/build/libs'
+        
