@@ -33,7 +33,18 @@ stages:
             displayName: 'Build Project'
             inputs:
               gradleWrapperFile: "gradlew"
-              tasks: "build"
+              tasks: "build -x test"
+              publishJUnitResults: false
+              javaHomeOption: "JDKVersion"
+              jdkVersionOption: "1.11"
+              sonarQubeRunAnalysis: false
+              spotBugsAnalysis: false
+
+          - task: Gradle@2
+            displayName: 'Unit Tests'
+            inputs:
+              gradleWrapperFile: "gradlew"
+              tasks: "test"
               publishJUnitResults: true
               testResultsFiles: "**/TEST-*.xml"
               javaHomeOption: "JDKVersion"
@@ -50,6 +61,6 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Build Artifacts'
             inputs:
-              ArtifactName: 'deploy'
+              ArtifactName: 'artifact'
               PathtoPublish: '$(System.DefaultWorkingDirectory)/build/libs'
         
