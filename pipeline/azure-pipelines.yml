@@ -13,10 +13,20 @@ pool:
 stages:
   - stage: build
     jobs:
-      - job: 'development_integration'
-        displayName: 'Development Integration'
+      - job: 'CI'
+        displayName: 'Build'
         steps:
           - checkout: self
+
+      - task: SonarCloudPrepare@1
+        displayName: 'SonarCloud Prepare'
+        inputs:
+          SonarCloud: "SonarCloud GitHub"
+          organization: "sancanoga"
+          scannerMode: "Other"
+          extraProperties: |
+              sonar.projectKey=sancanoga-demo-devops
+              sonar.projectName=demo-devops
 
           - task: Gradle@2
             displayName: 'Build Project'
@@ -30,3 +40,20 @@ stages:
               testRunTitle: UnitTests Results
               sonarQubeRunAnalysis: true
               spotBugsAnalysis: true
+
+      - task: SonarCloudPublish@1
+        displayName: 'SonarCloud Publish'
+        inputs:
+          pollingTimeoutSec: "300"
+
+      - task: sonarcloud-buildbreaker@2
+        displayName: Quality Gate Validation
+        inputs:
+          SonarCloud: "SonarCloud GitHub"
+          organization: "sancanoga"
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publish Build Artifacts'
+        inputs:
+          ArtifactName: 'deploy'
+          PathtoPublish: '$(System.DefaultWorkingDirectory)/build/libs'
