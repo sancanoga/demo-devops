@@ -1,0 +1,32 @@
+trigger:
+  branches:
+    include:
+      - main
+      - develop
+
+variables:
+  Docker.Image.Name: demo-devops
+
+pool:
+  vmImage: 'ubuntu-20.04'
+
+stages:
+  - stage: build
+    jobs:
+      - job: 'development_integration'
+        displayName: 'Development Integration'
+        steps:
+          - checkout: self
+
+          - task: Gradle@2
+            displayName: 'Build Project'
+            inputs:
+              gradleWrapperFile: "gradlew"
+              tasks: "build"
+              publishJUnitResults: true
+              testResultsFiles: "**/TEST-*.xml"
+              javaHomeOption: "JDKVersion"
+              jdkVersionOption: "1.11"
+              testRunTitle: UnitTests Results
+              sonarQubeRunAnalysis: true
+              spotBugsAnalysis: true
