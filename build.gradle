@@ -20,6 +20,12 @@ repositories {
 
 apply plugin: "org.sonarqube"
 
+sonarqube {
+	properties {
+		property "sonar.branch.name", "nombre_de_tu_rama_predeterminada"
+	}
+}
+
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'junit:junit:4.13.1'

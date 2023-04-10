@@ -41,7 +41,7 @@ stages:
               testRunTitle: UnitTests Results
               sonarQubeRunAnalysis: true
               spotBugsAnalysis: true
-
+              
           - task: SonarCloudPublish@1
             displayName: 'SonarCloud Publish'
             inputs:
