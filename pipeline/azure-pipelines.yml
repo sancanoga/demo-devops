@@ -25,7 +25,7 @@ stages:
               organization: "sancanoga"
               scannerMode: "Other"
               extraProperties: |
-                  sonar.projectKey=sancanoga-demo-devops
+                  sonar.projectKey=sancanoga_demo-devops
                   sonar.projectName=demo-devops
                   sonar.branch.name=main
 
@@ -41,7 +41,7 @@ stages:
               testRunTitle: UnitTests Results
               sonarQubeRunAnalysis: true
               spotBugsAnalysis: true
-              
+
           - task: SonarCloudPublish@1
             displayName: 'SonarCloud Publish'
             inputs:
