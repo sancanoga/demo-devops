@@ -22,12 +22,12 @@ public class Devops {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Error"));
         }
 
-        return ResponseEntity.ok(new Response("Hello " + messageRequest.getTo() + " your message will be sent v1.0"));
+        return ResponseEntity.ok(new Response("Hello " + messageRequest.getTo() + " your message will be sent"));
     }
 
     @RequestMapping(value = "/devops", method = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
     public ResponseEntity<Object> handleError() {
-        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(new Response("Error"));
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(new Response("Error v1.0"));
     }
 
 
