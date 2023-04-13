@@ -22,7 +22,7 @@ public class Devops {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(new Response("Error"));
         }
 
-        return ResponseEntity.ok(new Response("Hello " + messageRequest.getTo() + " your message will be sent"));
+        return ResponseEntity.ok(new Response("Hello " + messageRequest.getTo() + " your message will be sent v1.0"));
     }
 
     @RequestMapping(value = "/devops", method = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
