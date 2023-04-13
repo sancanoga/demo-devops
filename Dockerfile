@@ -1,4 +1,4 @@
 FROM openjdk:11
-ARG JAR_FILE=demo-devops/build/libs/demo-devops-0.0.1-SNAPSHOT.jar
+ARG JAR_FILE
 COPY ${JAR_FILE} app.jar
 ENTRYPOINT ["java","-jar","/app.jar"]
