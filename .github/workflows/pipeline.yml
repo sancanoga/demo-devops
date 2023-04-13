@@ -30,12 +30,7 @@ jobs:
 
     - name: Unit Test
       run: ./gradlew test
-
-    - name: Set up QEMU
-      uses: docker/setup-qemu-action@v2
-
-    - name: Set up Docker Buildx
-      uses: docker/setup-buildx-action@v2
+      
     - name: Login to Docker Hub
       uses: docker/login-action@v2
       with:
@@ -48,4 +43,3 @@ jobs:
         context: .
         push: true
         tags: sancanoga/demo-devops:latest
-        build-arg: JAR_FILE=build/libs/demo-devops-0.0.1-SNAPSHOT.jar
