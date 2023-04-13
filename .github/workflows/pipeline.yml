@@ -52,6 +52,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: superfly/flyctl-actions/setup-flyctl@master
-      - run: flyctl launch --name demo-devops -r bog --image sancanoga/demo-devops:latest --now
+      - run: flyctl launch --name demo-devops -r bog --image sancanoga/demo-devops:latest --auto-confirm --now
         env:
           FLY_API_TOKEN: ${{ secrets.FLY_IO_TOKEN }}
