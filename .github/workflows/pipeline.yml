@@ -45,5 +45,7 @@ jobs:
     - name: Build and push
       uses: docker/build-push-action@v2
       with:
+        context: .
         push: true
         tags: sancanoga/demo-devops:latest
+        build-arg: JAR_FILE=build/libs/demo-devops-0.0.1-SNAPSHOT.jar
