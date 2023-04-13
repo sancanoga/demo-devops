@@ -27,7 +27,7 @@ public class Devops {
 
     @RequestMapping(value = "/devops", method = {RequestMethod.GET, RequestMethod.PUT, RequestMethod.DELETE})
     public ResponseEntity<Object> handleError() {
-        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(new Response("Error v1.0"));
+        return ResponseEntity.status(HttpStatus.METHOD_NOT_ALLOWED).body(new Response("Error v2.0"));
     }
 
 
