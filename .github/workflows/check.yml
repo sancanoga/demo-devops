@@ -1,0 +1,25 @@
+name: Imprimir valor de secreto en ambiente DEV
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+
+jobs:
+  print-secret-value:
+    runs-on: ubuntu-latest
+    environment: DEV
+
+    steps:
+    - name: Checkout código fuente
+      uses: actions/checkout@v2
+
+    - name: Almacenar valor de secreto en archivo
+      run: |
+        echo "${{ secrets.CONSUL_TOKEN }}" > secret_value.txt
+
+    - name: Imprimir valor de secreto
+      run: |
+        cat secret_value.txt
